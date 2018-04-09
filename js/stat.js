@@ -14,14 +14,16 @@ var BAR_GAP = 50;
 
 var renderCloud = function (ctx, x, y, width, height, colorStroke, colorFill, colorShadow) {
   ctx.beginPath();
-  ctx.moveTo(x, y); // left upper
-  ctx.lineTo(x + (width / 2), y + 15); // middle upper
-  ctx.lineTo(x + width, y); // right upper
-  ctx.lineTo(x + (width - 15), y + (height / 2)); // right middle
-  ctx.lineTo(x + width, y + height); // right bottom
-  ctx.lineTo(x + (width / 2), y + (height - 15)); // middle bottom
-  ctx.lineTo(x, y + height); // left bottom
-  ctx.lineTo(x + 15, y + (height / 2)); // left middle
+  ctx.fillStyle = colorFill;
+  ctx.fillRect(110, 10, 420, 270);
+  // ctx.moveTo(x, y); // left upper
+  // ctx.lineTo(x + (width / 2), y + 15); // middle upper
+  // ctx.lineTo(x + width, y); // right upper
+  // ctx.lineTo(x + (width - 15), y + (height / 2)); // right middle
+  // ctx.lineTo(x + width, y + height); // right bottom
+  // ctx.lineTo(x + (width / 2), y + (height - 15)); // middle bottom
+  // ctx.lineTo(x, y + height); // left bottom
+  // ctx.lineTo(x + 15, y + (height / 2)); // left middle
   ctx.shadowColor = colorShadow;
   ctx.shadowBlur = 20;
   ctx.shadowOffsetX = 10;
@@ -29,8 +31,8 @@ var renderCloud = function (ctx, x, y, width, height, colorStroke, colorFill, co
   ctx.closePath();
   ctx.strokeStyle = colorStroke;
   ctx.stroke();
-  ctx.fillStyle = colorFill;
-  ctx.fill();
+  // ctx.fillStyle = colorFill;
+  // ctx.fill();
 };
 
 // Random blue color
@@ -71,13 +73,14 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = 'black';
     var maxTime = getMaxElement(times);
     var barHeight = CHART_HEIGHT * Math.round(times[i]) / maxTime;
+    var xPosition = CLOUD_X + PADDING_HORIZONTAL + BAR_WIDTH * (i) + BAR_GAP * (i);
 
     ctx.fillText(Math.round(times[i]),
-        CLOUD_X + PADDING_HORIZONTAL + BAR_WIDTH * (i) + BAR_GAP * (i),
+        xPosition,
         CLOUD_Y + PADDING_VERTICAL + (CHART_HEIGHT - barHeight) + FONT_GAP * 2);
     ctx.fillText(
         names[i],
-        CLOUD_X + PADDING_HORIZONTAL + BAR_WIDTH * (i) + BAR_GAP * (i),
+        xPosition,
         CLOUD_Y + PADDING_VERTICAL + FONT_GAP * 2 + CHART_HEIGHT + FONT_GAP * 1.25);
 
     if (names[i] === 'Вы') {
@@ -87,7 +90,7 @@ window.renderStatistics = function (ctx, names, times) {
     }
 
     ctx.fillRect(
-        CLOUD_X + PADDING_HORIZONTAL + BAR_WIDTH * (i) + BAR_GAP * (i),
+        xPosition,
         CLOUD_Y + PADDING_VERTICAL + (CHART_HEIGHT - barHeight) + FONT_GAP * 2.25,
         BAR_WIDTH,
         barHeight);
