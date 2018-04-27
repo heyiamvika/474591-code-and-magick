@@ -62,7 +62,6 @@ var closePopup = function () {
 };
 
 var sendForm = function () {
-  console.log('something');
 };
 
 var popupEscCloseHandler = function (evt) {
