@@ -16,14 +16,6 @@ var renderCloud = function (ctx, x, y, width, height, colorStroke, colorFill, co
   ctx.beginPath();
   ctx.fillStyle = colorFill;
   ctx.fillRect(110, 10, 420, 270);
-  // ctx.moveTo(x, y); // left upper
-  // ctx.lineTo(x + (width / 2), y + 15); // middle upper
-  // ctx.lineTo(x + width, y); // right upper
-  // ctx.lineTo(x + (width - 15), y + (height / 2)); // right middle
-  // ctx.lineTo(x + width, y + height); // right bottom
-  // ctx.lineTo(x + (width / 2), y + (height - 15)); // middle bottom
-  // ctx.lineTo(x, y + height); // left bottom
-  // ctx.lineTo(x + 15, y + (height / 2)); // left middle
   ctx.shadowColor = colorShadow;
   ctx.shadowBlur = 20;
   ctx.shadowOffsetX = 10;
@@ -31,8 +23,6 @@ var renderCloud = function (ctx, x, y, width, height, colorStroke, colorFill, co
   ctx.closePath();
   ctx.strokeStyle = colorStroke;
   ctx.stroke();
-  // ctx.fillStyle = colorFill;
-  // ctx.fill();
 };
 
 // Random blue color
@@ -42,7 +32,6 @@ var generateRandomBlue = function () {
 };
 
 // Generate max Element and sort statistics
-// Think how to use this function with empty arrays!
 
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
