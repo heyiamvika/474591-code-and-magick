@@ -1,11 +1,10 @@
 'use strict';
 
 var setup = document.querySelector('.setup');
-var setupUserPic = setup.querySelector('.setup-user-pic');
+var dialogHandle = setup.querySelector('.setup-user-pic');
 // already exists in setup.js, refactor
-console.log(setupUserPic);
 
-setupUserPic.addEventListener('mousedown', function (evt) {
+dialogHandle.addEventListener('mousedown', function (evt) {
   evt.preventDefault();
 
   var mouseStart = {
@@ -38,7 +37,22 @@ setupUserPic.addEventListener('mousedown', function (evt) {
   };
 
   document.addEventListener('mousemove', onMouseMove);
-  console.log('mousemove');
   document.addEventListener('mouseup', onMouseUp);
-  console.log('mouseup');
+});
+
+
+var shopElement = document.querySelector('.setup-artifacts-shop');
+var draggedItem = null;
+
+shopElement.addEventListener('dragstart', function (evt) {
+  if (evt.target.tagName === 'img') {
+    draggedItem = evt.target;
+    evt.dataTransfer.setData('text/plain', evt.target.alt);
+  }
+});
+
+var artifactsElement = document.querySelector('.setup-artifacts');
+artifactsElement.addEventListener('dragover', function (evt) {
+  evt.preventDefault();
+  return false;
 });

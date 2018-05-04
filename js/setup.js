@@ -83,6 +83,9 @@ closeButton.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
+
+  setup.style.top = '80px';
+  setup.style.left = '50%';
 });
 
 saveButton.addEventListener('click', sendForm);
